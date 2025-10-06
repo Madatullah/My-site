@@ -18,6 +18,33 @@
 	};
 </script>
 <script type="text/javascript" src="//www.highperformanceformat.com/33b36edeacfdfbd7c2e4b6e432fc60d4/invoke.js"></script>
+<!-- Netlify Identity Widget -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- دکمه ورود -->
+<button id="login-button">ورود مدیر</button>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.init();
+
+    const loginBtn = document.getElementById('login-button');
+
+    loginBtn.addEventListener('click', () => {
+      window.netlifyIdentity.open(); // فرم ورود باز می‌شود
+    });
+
+    window.netlifyIdentity.on('login', user => {
+      alert('ورود موفق! خوش آمدید ' + user.email);
+      window.location.reload();
+    });
+
+    window.netlifyIdentity.on('logout', () => {
+      alert('خروج انجام شد!');
+      window.location.reload();
+    });
+  }
+</script>
 <body>
     <section class="header">
         <nav>
@@ -195,4 +222,5 @@
 
     <script src="Theme/js/script.js"></script>
 </body>
+
 </html>
